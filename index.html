@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>ClassesControl — Em Breve</title>
+<meta name="description" content="A nova revolução na gestão de escolas de idiomas. Em breve em www.classescontrol.com.br"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+/* ===== TOKENS ===== */
+:root{
+  --bg: #03030f;
+  --bg-card: #0d0d24;
+  --bg-card-h: #111130;
+  --violet: #6c63ff;
+  --cyan: #00d4ff;
+  --magenta: #ff006e;
+  --gv: rgba(108,99,255,.4);
+  --gc: rgba(0,212,255,.3);
+  --t1: #f0f0ff;
+  --t2: rgba(240,240,255,.55);
+  --t3: rgba(240,240,255,.28);
+  --b: rgba(108,99,255,.15);
+  --bh: rgba(108,99,255,.45);
+  --fd: 'Space Grotesk',sans-serif;
+  --fb: 'Inter',sans-serif;
+  --r: 16px;
+  --rs: 10px;
+  --tr: .4s cubic-bezier(.16,1,.3,1);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--t1);font-family:var(--fb);line-height:1.6;overflow-x:hidden;cursor:none}
+
+/* ===== NOISE ===== */
+.noise{position:fixed;inset:0;z-index:999;pointer-events:none;opacity:.025;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size:180px}
+
+/* ===== CURSOR ===== */
+#cur{position:fixed;width:10px;height:10px;background:var(--cyan);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .2s,height .2s,background .2s;box-shadow:0 0 16px var(--cyan),0 0 32px rgba(0,212,255,.25);mix-blend-mode:screen}
+#curt{position:fixed;width:38px;height:38px;border:1px solid rgba(108,99,255,.5);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:left .1s ease,top .1s ease,width .3s,height .3s,border-color .3s}
+body.ch #cur{width:18px;height:18px;background:var(--violet)}
+body.ch #curt{width:58px;height:58px;border-color:rgba(108,99,255,.9)}
+
+/* ===== NAV ===== */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:20px 48px;background:linear-gradient(180deg,rgba(3,3,15,.96) 0%,transparent 100%);backdrop-filter:blur(12px)}
+.nlogo{display:flex;align-items:center;gap:10px;font-family:var(--fd);font-size:1.2rem;color:var(--t1);letter-spacing:-.02em}
+.nico{font-size:1.6rem;background:linear-gradient(135deg,var(--violet),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;filter:drop-shadow(0 0 8px var(--violet))}
+.nlogo strong{color:var(--cyan)}
+.nbadge{font-size:.72rem;font-family:var(--fd);font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--cyan);border:1px solid rgba(0,212,255,.3);padding:6px 14px;border-radius:100px;background:rgba(0,212,255,.06);animation:bp 2.2s ease-in-out infinite}
+@keyframes bp{0%,100%{box-shadow:0 0 0 0 rgba(0,212,255,0)}50%{box-shadow:0 0 0 7px rgba(0,212,255,.07)}}
+
+/* ===== HERO ===== */
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden;padding:120px 48px 80px}
+#ocanvas{position:absolute;inset:0;width:100%;height:100%;z-index:0}
+.hcont{position:relative;z-index:10;max-width:780px;text-align:center}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:.82rem;font-family:var(--fd);font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--t2);margin-bottom:24px;opacity:0;animation:fu .8s .3s forwards}
+.edot{width:6px;height:6px;border-radius:50%;background:var(--cyan);box-shadow:0 0 8px var(--cyan);animation:blink 1.6s ease-in-out infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.25}}
+.htitle{font-family:var(--fd);font-size:clamp(2.4rem,5.5vw,4.6rem);font-weight:700;line-height:1.07;letter-spacing:-.03em;margin-bottom:24px;opacity:0;animation:fu .8s .5s forwards}
+.gt{background:linear-gradient(90deg,var(--violet),var(--cyan),var(--violet));background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:gs 4s linear infinite}
+@keyframes gs{0%{background-position:0% center}100%{background-position:200% center}}
+.hsub{font-size:1.05rem;color:var(--t2);max-width:560px;margin:0 auto 40px;line-height:1.75;opacity:0;animation:fu .8s .7s forwards}
+.hact{display:flex;gap:14px;justify-content:center;align-items:center;flex-wrap:wrap;margin-bottom:64px;opacity:0;animation:fu .8s .9s forwards}
+
+.btnp{display:inline-flex;align-items:center;gap:10px;padding:14px 28px;background:linear-gradient(135deg,var(--violet),#8b5cf6);border:none;border-radius:var(--rs);color:#fff;font-family:var(--fd);font-size:.92rem;font-weight:600;cursor:none;transition:var(--tr);position:relative;overflow:hidden;box-shadow:0 0 28px rgba(108,99,255,.4)}
+.btnp::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.1),transparent);opacity:0;transition:opacity .3s}
+.btnp:hover{transform:translateY(-2px);box-shadow:0 0 50px rgba(108,99,255,.65)}
+.btnp:hover::before{opacity:1}
+.btnp svg{width:17px;height:17px;transition:transform .3s}
+.btnp:hover svg{transform:translateX(4px)}
+.btng{display:inline-flex;align-items:center;padding:14px 28px;border:1px solid var(--b);border-radius:var(--rs);color:var(--t2);font-family:var(--fd);font-size:.92rem;font-weight:500;text-decoration:none;cursor:none;transition:var(--tr)}
+.btng:hover{border-color:var(--bh);color:var(--t1);background:rgba(108,99,255,.08)}
+
+.hstats{display:flex;align-items:center;justify-content:center;gap:40px;opacity:0;animation:fu .8s 1.1s forwards}
+.stat{text-align:center}
+.snum{font-family:var(--fd);font-size:2.1rem;font-weight:700;color:var(--cyan);text-shadow:0 0 20px rgba(0,212,255,.5)}
+.ssfx{font-family:var(--fd);font-size:1.2rem;color:var(--cyan);opacity:.7}
+.slbl{display:block;font-size:.76rem;color:var(--t3);letter-spacing:.04em;margin-top:4px}
+.sdiv{width:1px;height:40px;background:var(--b)}
+
+/* ===== SCROLL HINT ===== */
+.scrhint{position:absolute;bottom:30px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;font-size:.72rem;color:var(--t3);letter-spacing:.08em;text-transform:uppercase;opacity:0;animation:fu 1s 1.5s forwards;z-index:10}
+.scrarr{width:1px;height:38px;background:linear-gradient(180deg,rgba(0,212,255,.6),transparent);animation:sl 2.2s ease-in-out infinite}
+@keyframes sl{0%{transform:scaleY(0);transform-origin:top;opacity:1}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom;opacity:0}}
+
+/* ===== FEATURES ===== */
+.features{padding:120px 48px;max-width:1200px;margin:0 auto}
+.shdr{text-align:center;margin-bottom:72px}
+.slbl-tag{display:inline-block;font-size:.73rem;font-family:var(--fd);font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--violet);margin-bottom:16px;position:relative}
+.slbl-tag::before,.slbl-tag::after{content:'';position:absolute;top:50%;width:28px;height:1px;background:var(--violet);opacity:.5}
+.slbl-tag::before{right:calc(100% + 10px)}
+.slbl-tag::after{left:calc(100% + 10px)}
+.shdr h2{font-family:var(--fd);font-size:clamp(1.8rem,3.5vw,3rem);font-weight:700;letter-spacing:-.03em;line-height:1.14}
+.fgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.fc{position:relative;padding:32px;background:var(--bg-card);border:1px solid var(--b);border-radius:var(--r);overflow:hidden;transition:var(--tr);opacity:0;transform:translateY(32px)}
+.fc.vis{opacity:1;transform:translateY(0)}
+.fc:hover{border-color:var(--bh);background:var(--bg-card-h);transform:translateY(-6px)}
+.fc.feat{border-color:rgba(108,99,255,.5);background:linear-gradient(135deg,rgba(108,99,255,.08),rgba(0,212,255,.04))}
+.fbadge{display:inline-block;font-size:.68rem;font-family:var(--fd);font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--cyan);background:rgba(0,212,255,.1);border:1px solid rgba(0,212,255,.25);padding:4px 10px;border-radius:100px;margin-bottom:20px}
+.ficon{width:46px;height:46px;margin-bottom:20px;color:var(--violet);transition:color .3s,filter .3s}
+.fc:hover .ficon{color:var(--cyan);filter:drop-shadow(0 0 8px var(--cyan))}
+.ficon svg{width:100%;height:100%}
+.fc h3{font-family:var(--fd);font-size:1.08rem;font-weight:600;margin-bottom:12px;letter-spacing:-.01em}
+.fc p{font-size:.88rem;color:var(--t2);line-height:1.75}
+.fglow{position:absolute;bottom:-40px;right:-40px;width:120px;height:120px;background:radial-gradient(circle,rgba(108,99,255,.15),transparent 70%);border-radius:50%;pointer-events:none;opacity:0;transition:opacity .4s}
+.fc:hover .fglow{opacity:1}
+
+/* ===== VISION ===== */
+.vision{position:relative;padding:120px 48px;overflow:hidden;text-align:center}
+.vision::before,.vision::after{content:'';position:absolute;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--violet),var(--cyan),var(--violet),transparent);opacity:.45}
+.vision::before{top:0}
+.vision::after{bottom:0}
+.vbg{position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 50%,rgba(108,99,255,.07),transparent 70%);pointer-events:none}
+.vcont{position:relative;z-index:2;max-width:700px;margin:0 auto}
+.vcont h2{font-family:var(--fd);font-size:clamp(1.8rem,3.5vw,3rem);font-weight:700;letter-spacing:-.03em;line-height:1.14;margin-bottom:20px}
+.vcont>p{font-size:1rem;color:var(--t2);line-height:1.8;margin-bottom:56px}
+.vpillars{display:flex;justify-content:center;gap:48px;flex-wrap:wrap}
+.vp{display:flex;flex-direction:column;align-items:center;gap:10px;opacity:0;transform:translateY(20px);transition:var(--tr)}
+.vp.vis{opacity:1;transform:translateY(0)}
+.vpico{font-size:1.9rem;width:62px;height:62px;display:flex;align-items:center;justify-content:center;background:var(--bg-card);border:1px solid var(--b);border-radius:var(--rs);transition:var(--tr)}
+.vp:hover .vpico{border-color:var(--bh);background:rgba(108,99,255,.1);box-shadow:0 0 20px rgba(108,99,255,.2);transform:scale(1.1)}
+.vp span{font-family:var(--fd);font-size:.82rem;font-weight:600;color:var(--t2);letter-spacing:.04em}
+
+/* ===== NOTIFY ===== */
+.nsec{padding:120px 48px;text-align:center}
+.ncont{max-width:600px;margin:0 auto}
+.ncont h2{font-family:var(--fd);font-size:clamp(2rem,4vw,3.2rem);font-weight:700;letter-spacing:-.03em;line-height:1.1;margin-bottom:16px}
+.ncont>p{color:var(--t2);margin-bottom:40px}
+.nform{display:flex;gap:12px;max-width:500px;margin:0 auto 16px}
+.nform input{flex:1;padding:14px 20px;background:var(--bg-card);border:1px solid var(--b);border-radius:var(--rs);color:var(--t1);font-family:var(--fb);font-size:.92rem;outline:none;transition:border-color .3s,box-shadow .3s;cursor:none}
+.nform input::placeholder{color:var(--t3)}
+.nform input:focus{border-color:var(--violet);box-shadow:0 0 0 3px rgba(108,99,255,.15)}
+.nprivacy{font-size:.78rem;color:var(--t3)}
+.smsg{display:none;align-items:center;gap:8px;margin-top:20px;padding:14px 24px;background:rgba(0,212,255,.08);border:1px solid rgba(0,212,255,.25);border-radius:var(--rs);color:var(--cyan);font-family:var(--fd);font-weight:500;animation:fu .5s forwards}
+
+/* ===== FOOTER ===== */
+footer{padding:48px;border-top:1px solid var(--b);text-align:center}
+.flogo{display:inline-flex;align-items:center;gap:10px;font-family:var(--fd);font-size:1.1rem;margin-bottom:12px}
+.fdomain{font-family:var(--fd);font-size:.88rem;color:var(--violet);margin-bottom:8px;letter-spacing:.02em}
+.fcopy{font-size:.78rem;color:var(--t3)}
+
+/* ===== UTILS ===== */
+@keyframes fu{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:900px){
+  .nav{padding:16px 24px}
+  .hero{padding:100px 24px 60px}
+  .features{padding:80px 24px}
+  .fgrid{grid-template-columns:repeat(2,1fr)}
+  .vision,.nsec,footer{padding:80px 24px}
+  .hstats{gap:24px}
+}
+@media(max-width:600px){
+  .fgrid{grid-template-columns:1fr}
+  .nform{flex-direction:column}
+  .hstats{gap:16px}
+  .sdiv{display:none}
+  .vpillars{gap:24px}
+}
+</style>
+</head>
+<body>
+
+<div class="noise"></div>
+<div id="cur"></div>
+<div id="curt"></div>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nlogo">
+    <span class="nico">⬡</span>
+    <span>Classes<strong>Control</strong></span>
+  </div>
+  <div class="nbadge">Em desenvolvimento</div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <canvas id="ocanvas"></canvas>
+  <div class="hcont">
+    <div class="eyebrow">
+      <span class="edot"></span>
+      Construindo o futuro da educação em idiomas
+    </div>
+    <h1 class="htitle">
+      Uma nova revolução<br/>
+      <span class="gt">na gestão de escolas</span><br/>
+      de idiomas
+    </h1>
+    <p class="hsub">ClassesControl está sendo forjado para transformar como você gerencia, cresce e encanta seus alunos. Do contrato digital à assinatura eletrônica — tudo em um só lugar.</p>
+    <div class="hact">
+      <button class="btnp" id="nbtn">
+        <span>Quero ser notificado</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </button>
+      <a href="#features" class="btng">Ver recursos</a>
+    </div>
+    <div class="hstats">
+      <div class="stat"><span class="snum" data-t="100">0</span><span class="ssfx">%</span><span class="slbl">Web-based</span></div>
+      <div class="sdiv"></div>
+      <div class="stat"><span class="snum" data-t="12">0</span><span class="ssfx">+</span><span class="slbl">Módulos integrados</span></div>
+      <div class="sdiv"></div>
+      <div class="stat"><span class="snum" data-t="0">0</span><span class="ssfx">px</span><span class="slbl">Papel necessário</span></div>
+    </div>
+  </div>
+  <div class="scrhint">
+    <span>Explorar</span>
+    <div class="scrarr"></div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="features" id="features">
+  <div class="shdr">
+    <span class="slbl-tag">Recursos</span>
+    <h2>Tudo que sua escola precisa,<br/><span class="gt">em um único sistema</span></h2>
+  </div>
+  <div class="fgrid">
+
+    <div class="fc" data-d="0">
+      <div class="ficon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+      </div>
+      <h3>Gestão de Aulas</h3>
+      <p>Agendamento inteligente, controle de presença, planos de aula e acompanhamento do progresso de cada aluno em tempo real.</p>
+      <div class="fglow"></div>
+    </div>
+
+    <div class="fc" data-d="100">
+      <div class="ficon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 12h6M9 16h6M13 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V9l-7-7z"/></svg>
+      </div>
+      <h3>Contratos Digitais</h3>
+      <p>Geração automática de contratos personalizados com cláusulas dinâmicas adaptadas ao perfil de cada aluno e plano.</p>
+      <div class="fglow"></div>
+    </div>
+
+    <div class="fc feat" data-d="200">
+      <div class="fbadge">Destaque</div>
+      <div class="ficon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      </div>
+      <h3>Assinatura Eletrônica</h3>
+      <p>Coleta de assinaturas digitais com validade jurídica completa. Zero papel, máxima segurança e conformidade legal.</p>
+      <div class="fglow"></div>
+    </div>
+
+    <div class="fc" data-d="300">
+      <div class="ficon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+      </div>
+      <h3>Integração Bancária</h3>
+      <p>Conexão direta via Open Banking com os principais bancos do Brasil. PIX automático, boletos e cartão integrados.</p>
+      <div class="fglow"></div>
+    </div>
+
+    <div class="fc" data-d="400">
+      <div class="ficon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 100 7h5a3.5 3.5 0 110 7H6"/></svg>
+      </div>
+      <h3>Gestão de Pagamentos</h3>
+      <p>Cobranças automáticas, régua de inadimplência inteligente, relatórios financeiros e conciliação bancária automatizada.</p>
+      <div class="fglow"></div>
+    </div>
+
+    <div class="fc" data-d="500">
+      <div class="ficon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+      </div>
+      <h3>Analytics & Relatórios</h3>
+      <p>Dashboards com insights sobre retenção, desempenho pedagógico e saúde financeira da sua escola em tempo real.</p>
+      <div class="fglow"></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- VISION -->
+<section class="vision" id="vision">
+  <div class="vbg"></div>
+  <div class="vcont">
+    <span class="slbl-tag">Nossa visão</span>
+    <h2>Feito por quem<br/><span class="gt">entende o setor</span></h2>
+    <p>ClassesControl nasceu da experiência real com escolas de idiomas. Cada funcionalidade foi desenhada para eliminar burocracia, reduzir inadimplência e devolver ao gestor o tempo que importa — ensinar.</p>
+    <div class="vpillars">
+      <div class="vp" data-d="0"><div class="vpico">⚡</div><span>Velocidade</span></div>
+      <div class="vp" data-d="100"><div class="vpico">🔒</div><span>Segurança</span></div>
+      <div class="vp" data-d="200"><div class="vpico">🌐</div><span>Integração</span></div>
+      <div class="vp" data-d="300"><div class="vpico">📱</div><span>Mobile-first</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- NOTIFY -->
+<section class="nsec" id="notify">
+  <div class="ncont">
+    <span class="slbl-tag">Seja o primeiro</span>
+    <h2>Receba acesso<br/><span class="gt">antecipado</span></h2>
+    <p>Cadastre-se agora e garanta condições especiais de lançamento para sua escola.</p>
+    <div class="nform" id="nform">
+      <input type="email" placeholder="seu@email.com" id="einput"/>
+      <button class="btnp" id="sbtn">
+        <span>Garantir minha vaga</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </button>
+    </div>
+    <p class="nprivacy">Sem spam. Cancelamento a qualquer momento.</p>
+    <div class="smsg" id="smsg"><span>✓</span> Perfeito! Te avisaremos assim que estivermos prontos.</div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="flogo">
+    <span class="nico">⬡</span>
+    <span>Classes<strong>Control</strong></span>
+  </div>
+  <p class="fdomain">www.classescontrol.com.br</p>
+  <p class="fcopy">© 2025 ClassesControl · Todos os direitos reservados · Em desenvolvimento</p>
+</footer>
+
+<script>
+// ===== CURSOR =====
+const cur = document.getElementById('cur');
+const curt = document.getElementById('curt');
+document.addEventListener('mousemove', e => {
+  cur.style.left = e.clientX + 'px';
+  cur.style.top = e.clientY + 'px';
+  curt.style.left = e.clientX + 'px';
+  curt.style.top = e.clientY + 'px';
+});
+document.querySelectorAll('a,button,input,.fc,.vp').forEach(el => {
+  el.addEventListener('mouseenter', () => document.body.classList.add('ch'));
+  el.addEventListener('mouseleave', () => document.body.classList.remove('ch'));
+});
+
+// ===== ORB CANVAS =====
+const cv = document.getElementById('ocanvas');
+const cx = cv.getContext('2d');
+let W, H, time = 0, mx = 0, my = 0;
+
+function resize() {
+  W = cv.width = window.innerWidth;
+  H = cv.height = window.innerHeight;
+}
+resize();
+window.addEventListener('resize', resize);
+
+document.addEventListener('mousemove', e => {
+  mx = (e.clientX / window.innerWidth - .5) * 2;
+  my = (e.clientY / window.innerHeight - .5) * 2;
+});
+
+// Stars
+const stars = Array.from({length: 220}, () => ({
+  x: Math.random(), y: Math.random(),
+  size: Math.random() * 1.4 + .3,
+  a: Math.random() * .45 + .08,
+  t: Math.random() * Math.PI * 2,
+  s: Math.random() * .014 + .004
+}));
+
+// Particles
+function mkP() {
+  return {
+    ang: Math.random() * Math.PI * 2,
+    orb: Math.random() * Math.min(window.innerWidth, window.innerHeight) * .36 + 55,
+    spd: (Math.random() * .0045 + .001) * (Math.random() > .5 ? 1 : -1),
+    z: Math.random() * 2 + .2,
+    a: Math.random() * .55 + .1,
+    sz: Math.random() * 2.4 + .5,
+    tw: Math.random() * Math.PI * 2,
+    ts: Math.random() * .04 + .01,
+    c: Math.random() > .5 ? 0 : 1
+  };
+}
+const parts = Array.from({length: 180}, mkP);
+
+function drawOrb(t) {
+  const ox = W / 2 + mx * 28;
+  const oy = H / 2 + my * 28;
+  const rad = Math.min(W, H) * .2;
+
+  // Ambient glow rings
+  for (let i = 5; i >= 0; i--) {
+    const r = rad * (1.6 + i * .55);
+    const a = .025 - i * .003;
+    const g = cx.createRadialGradient(ox, oy, 0, ox, oy, r);
+    g.addColorStop(0, `rgba(108,99,255,${a + .018})`);
+    g.addColorStop(.5, `rgba(0,212,255,${a})`);
+    g.addColorStop(1, 'transparent');
+    cx.beginPath(); cx.arc(ox, oy, r, 0, Math.PI * 2);
+    cx.fillStyle = g; cx.fill();
+  }
+
+  // Core
+  const cg = cx.createRadialGradient(ox - rad*.3, oy - rad*.3, 0, ox, oy, rad);
+  cg.addColorStop(0, 'rgba(200,180,255,.14)');
+  cg.addColorStop(.35, 'rgba(108,99,255,.1)');
+  cg.addColorStop(.7, 'rgba(0,212,255,.05)');
+  cg.addColorStop(1, 'transparent');
+  cx.beginPath(); cx.arc(ox, oy, rad, 0, Math.PI * 2);
+  cx.fillStyle = cg; cx.fill();
+
+  // Rings
+  [[1.2, .5, t*.32, '108,99,255'], [1.6, .65, -t*.22, '0,212,255'], [1.95, .72, t*.16, '255,0,110']].forEach(([rx, ry, ang, col]) => {
+    const r = rad * rx;
+    cx.save();
+    cx.translate(ox, oy);
+    cx.rotate(ang);
+    cx.scale(1, ry);
+    const lg = cx.createLinearGradient(-r, 0, r, 0);
+    lg.addColorStop(0, `rgba(${col},0)`);
+    lg.addColorStop(.3, `rgba(${col},.5)`);
+    lg.addColorStop(.5, `rgba(${col},.85)`);
+    lg.addColorStop(.7, `rgba(${col},.5)`);
+    lg.addColorStop(1, `rgba(${col},0)`);
+    cx.beginPath();
+    cx.ellipse(0, 0, r, r * .04, 0, 0, Math.PI * 2);
+    cx.strokeStyle = lg; cx.lineWidth = 1.5; cx.stroke();
+    cx.restore();
+  });
+}
+
+function animate() {
+  cx.clearRect(0, 0, W, H);
+  time += .01;
+
+  // Stars
+  stars.forEach(s => {
+    s.t += s.s;
+    const a = s.a * (.5 + .5 * Math.sin(s.t));
+    cx.beginPath();
+    cx.arc(s.x * W + mx * s.size, s.y * H + my * s.size * .5, s.size, 0, Math.PI * 2);
+    cx.fillStyle = `rgba(200,200,255,${a})`; cx.fill();
+  });
+
+  drawOrb(time);
+
+  // Particles
+  parts.forEach(p => {
+    p.ang += p.spd;
+    p.tw += p.ts;
+    const par = p.z * .04;
+    const px = W/2 + Math.cos(p.ang) * p.orb + mx * p.orb * par;
+    const py = H/2 + Math.sin(p.ang) * p.orb * .5 + my * p.orb * par * .5;
+    const a = p.a * (.55 + .45 * Math.sin(p.tw));
+    cx.beginPath();
+    cx.arc(px, py, p.sz, 0, Math.PI * 2);
+    cx.fillStyle = p.c === 0 ? `rgba(108,99,255,${a})` : `rgba(0,212,255,${a})`;
+    cx.fill();
+  });
+
+  // Grid
+  cx.strokeStyle = 'rgba(108,99,255,.035)'; cx.lineWidth = 1;
+  for (let i = 0; i <= 12; i++) {
+    cx.beginPath(); cx.moveTo(W/12*i, 0); cx.lineTo(W/12*i, H); cx.stroke();
+  }
+  for (let i = 0; i <= 8; i++) {
+    cx.beginPath(); cx.moveTo(0, H/8*i); cx.lineTo(W, H/8*i); cx.stroke();
+  }
+
+  requestAnimationFrame(animate);
+}
+animate();
+
+// ===== SCROLL REVEAL =====
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      const d = parseInt(e.target.dataset.d || 0);
+      setTimeout(() => e.target.classList.add('vis'), d);
+      obs.unobserve(e.target);
+    }
+  });
+}, {threshold: .1, rootMargin: '0px 0px -50px 0px'});
+document.querySelectorAll('.fc,.vp').forEach(el => obs.observe(el));
+
+// ===== COUNTERS =====
+function counter(el, target) {
+  let start = null;
+  const step = ts => {
+    if (!start) start = ts;
+    const p = Math.min((ts - start) / 1400, 1);
+    const e = 1 - Math.pow(1 - p, 3);
+    el.textContent = Math.round(e * target);
+    if (p < 1) requestAnimationFrame(step);
+  };
+  requestAnimationFrame(step);
+}
+const sobs = new IntersectionObserver(entries => {
+  if (entries[0].isIntersecting) {
+    document.querySelectorAll('.snum').forEach(el => counter(el, parseInt(el.dataset.t)));
+    sobs.disconnect();
+  }
+}, {threshold: .5});
+sobs.observe(document.querySelector('.hstats'));
+
+// ===== CARD TILT =====
+document.querySelectorAll('.fc').forEach(card => {
+  card.addEventListener('mousemove', e => {
+    const r = card.getBoundingClientRect();
+    const x = (e.clientX - r.left) / r.width - .5;
+    const y = (e.clientY - r.top) / r.height - .5;
+    card.style.transform = `translateY(-6px) rotateX(${-y*6}deg) rotateY(${x*6}deg)`;
+    card.style.transition = 'transform .1s ease';
+  });
+  card.addEventListener('mouseleave', () => {
+    card.style.transform = '';
+    card.style.transition = 'all .4s cubic-bezier(.16,1,.3,1)';
+  });
+});
+
+// ===== NOTIFY =====
+document.getElementById('nbtn').addEventListener('click', () =>
+  document.getElementById('notify').scrollIntoView({behavior:'smooth'})
+);
+
+function handleSubmit() {
+  const v = document.getElementById('einput').value.trim();
+  const inp = document.getElementById('einput');
+  if (!v || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)) {
+    inp.style.borderColor = '#ff006e';
+    inp.style.boxShadow = '0 0 0 3px rgba(255,0,110,.15)';
+    setTimeout(() => { inp.style.borderColor = ''; inp.style.boxShadow = ''; }, 1500);
+    return;
+  }
+  document.getElementById('nform').style.display = 'none';
+  const msg = document.getElementById('smsg');
+  msg.style.display = 'inline-flex';
+}
+document.getElementById('sbtn').addEventListener('click', handleSubmit);
+document.getElementById('einput').addEventListener('keydown', e => { if (e.key === 'Enter') handleSubmit(); });
+
+// ===== SMOOTH ANCHORS =====
+document.querySelectorAll('a[href^="#"]').forEach(a =>
+  a.addEventListener('click', e => {
+    e.preventDefault();
+    document.querySelector(a.getAttribute('href'))?.scrollIntoView({behavior:'smooth'});
+  })
+);
+
+// ===== LOGO GLITCH =====
+const logo = document.querySelector('.nlogo');
+setInterval(() => {
+  if (Math.random() > .96) {
+    logo.style.textShadow = '2px 0 #ff006e,-2px 0 #00d4ff';
+    setTimeout(() => { logo.style.textShadow = ''; }, 75);
+  }
+}, 1200);
+</script>
+</body>
+</html>
