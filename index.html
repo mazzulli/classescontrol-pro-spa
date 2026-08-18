@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<title>ClassesControl — Em Breve</title>
-<meta name="description" content="A nova revolução na gestão de escolas de idiomas. Em breve em www.classescontrol.com.br"/>
+<title>Classes Control — Gestão completa para escolas de idiomas</title>
+<meta name="description" content="Aulas, presença, financeiro e contratos com assinatura eletrônica em um só sistema. Fale agora no WhatsApp e agende uma demonstração do Classes Control."/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet"/>
@@ -17,6 +17,9 @@
   --violet: #6c63ff;
   --cyan: #00d4ff;
   --magenta: #ff006e;
+  --pink: #ff5fa0;
+  --green: #4ade80;
+  --wa: #25D366;
   --gv: rgba(108,99,255,.4);
   --gc: rgba(0,212,255,.3);
   --t1: #f0f0ff;
@@ -50,23 +53,25 @@ body.ch #curt{width:58px;height:58px;border-color:rgba(108,99,255,.9)}
 .nlogo{display:flex;align-items:center;gap:10px;font-family:var(--fd);font-size:1.2rem;color:var(--t1);letter-spacing:-.02em}
 .nico{font-size:1.6rem;background:linear-gradient(135deg,var(--violet),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;filter:drop-shadow(0 0 8px var(--violet))}
 .nlogo strong{color:var(--cyan)}
-.nbadge{font-size:.72rem;font-family:var(--fd);font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--cyan);border:1px solid rgba(0,212,255,.3);padding:6px 14px;border-radius:100px;background:rgba(0,212,255,.06);animation:bp 2.2s ease-in-out infinite}
+.nbadge{display:inline-flex;align-items:center;gap:8px;font-size:.78rem;font-family:var(--fd);font-weight:600;letter-spacing:.03em;color:var(--cyan);border:1px solid rgba(0,212,255,.3);padding:9px 18px;border-radius:100px;background:rgba(0,212,255,.06);animation:bp 2.2s ease-in-out infinite;text-decoration:none;transition:var(--tr)}
+.nbadge:hover{background:rgba(0,212,255,.14);border-color:rgba(0,212,255,.6);transform:translateY(-1px)}
+.nbadge svg{width:15px;height:15px}
 @keyframes bp{0%,100%{box-shadow:0 0 0 0 rgba(0,212,255,0)}50%{box-shadow:0 0 0 7px rgba(0,212,255,.07)}}
 
 /* ===== HERO ===== */
 .hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden;padding:120px 48px 80px}
 #ocanvas{position:absolute;inset:0;width:100%;height:100%;z-index:0}
-.hcont{position:relative;z-index:10;max-width:780px;text-align:center}
+.hcont{position:relative;z-index:10;max-width:800px;text-align:center}
 .eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:.82rem;font-family:var(--fd);font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--t2);margin-bottom:24px;opacity:0;animation:fu .8s .3s forwards}
 .edot{width:6px;height:6px;border-radius:50%;background:var(--cyan);box-shadow:0 0 8px var(--cyan);animation:blink 1.6s ease-in-out infinite}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:.25}}
 .htitle{font-family:var(--fd);font-size:clamp(2.4rem,5.5vw,4.6rem);font-weight:700;line-height:1.07;letter-spacing:-.03em;margin-bottom:24px;opacity:0;animation:fu .8s .5s forwards}
 .gt{background:linear-gradient(90deg,var(--violet),var(--cyan),var(--violet));background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:gs 4s linear infinite}
 @keyframes gs{0%{background-position:0% center}100%{background-position:200% center}}
-.hsub{font-size:1.05rem;color:var(--t2);max-width:560px;margin:0 auto 40px;line-height:1.75;opacity:0;animation:fu .8s .7s forwards}
+.hsub{font-size:1.05rem;color:var(--t2);max-width:600px;margin:0 auto 40px;line-height:1.75;opacity:0;animation:fu .8s .7s forwards}
 .hact{display:flex;gap:14px;justify-content:center;align-items:center;flex-wrap:wrap;margin-bottom:64px;opacity:0;animation:fu .8s .9s forwards}
 
-.btnp{display:inline-flex;align-items:center;gap:10px;padding:14px 28px;background:linear-gradient(135deg,var(--violet),#8b5cf6);border:none;border-radius:var(--rs);color:#fff;font-family:var(--fd);font-size:.92rem;font-weight:600;cursor:none;transition:var(--tr);position:relative;overflow:hidden;box-shadow:0 0 28px rgba(108,99,255,.4)}
+.btnp{display:inline-flex;align-items:center;gap:10px;padding:14px 28px;background:linear-gradient(135deg,var(--violet),#8b5cf6);border:none;border-radius:var(--rs);color:#fff;font-family:var(--fd);font-size:.92rem;font-weight:600;cursor:none;transition:var(--tr);position:relative;overflow:hidden;box-shadow:0 0 28px rgba(108,99,255,.4);text-decoration:none}
 .btnp::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.1),transparent);opacity:0;transition:opacity .3s}
 .btnp:hover{transform:translateY(-2px);box-shadow:0 0 50px rgba(108,99,255,.65)}
 .btnp:hover::before{opacity:1}
@@ -79,7 +84,7 @@ body.ch #curt{width:58px;height:58px;border-color:rgba(108,99,255,.9)}
 .stat{text-align:center}
 .snum{font-family:var(--fd);font-size:2.1rem;font-weight:700;color:var(--cyan);text-shadow:0 0 20px rgba(0,212,255,.5)}
 .ssfx{font-family:var(--fd);font-size:1.2rem;color:var(--cyan);opacity:.7}
-.slbl{display:block;font-size:.76rem;color:var(--t3);letter-spacing:.04em;margin-top:4px}
+.slbl{display:block;font-size:.76rem;color:var(--t3);letter-spacing:.04em;margin-top:4px;max-width:130px}
 .sdiv{width:1px;height:40px;background:var(--b)}
 
 /* ===== SCROLL HINT ===== */
@@ -87,14 +92,35 @@ body.ch #curt{width:58px;height:58px;border-color:rgba(108,99,255,.9)}
 .scrarr{width:1px;height:38px;background:linear-gradient(180deg,rgba(0,212,255,.6),transparent);animation:sl 2.2s ease-in-out infinite}
 @keyframes sl{0%{transform:scaleY(0);transform-origin:top;opacity:1}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom;opacity:0}}
 
-/* ===== FEATURES ===== */
-.features{padding:120px 48px;max-width:1200px;margin:0 auto}
+/* ===== SECTION HEADER (shared) ===== */
 .shdr{text-align:center;margin-bottom:72px}
 .slbl-tag{display:inline-block;font-size:.73rem;font-family:var(--fd);font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--violet);margin-bottom:16px;position:relative}
 .slbl-tag::before,.slbl-tag::after{content:'';position:absolute;top:50%;width:28px;height:1px;background:var(--violet);opacity:.5}
 .slbl-tag::before{right:calc(100% + 10px)}
 .slbl-tag::after{left:calc(100% + 10px)}
 .shdr h2{font-family:var(--fd);font-size:clamp(1.8rem,3.5vw,3rem);font-weight:700;letter-spacing:-.03em;line-height:1.14}
+.shdr p{color:var(--t2);max-width:560px;margin:18px auto 0;font-size:.98rem;line-height:1.75}
+
+/* ===== PERFIS (roles) ===== */
+.roles{padding:100px 48px 40px;max-width:1200px;margin:0 auto}
+.rolegrid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.rc{background:var(--bg-card);border:1px solid var(--b);border-top:3px solid transparent;border-radius:var(--r);padding:26px;opacity:0;transform:translateY(24px);transition:var(--tr)}
+.rc.vis{opacity:1;transform:translateY(0)}
+.rc:hover{border-color:var(--bh);background:var(--bg-card-h);transform:translateY(-4px)}
+.rc-op{border-top-color:var(--cyan)}
+.rc-adm{border-top-color:var(--violet)}
+.rc-prof{border-top-color:var(--pink)}
+.rc-alu{border-top-color:var(--green)}
+.rc-tag{display:inline-block;font-size:.66rem;font-family:var(--fd);font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:4px 10px;border-radius:100px;margin-bottom:14px}
+.rc-op .rc-tag{color:var(--cyan);background:rgba(0,212,255,.1);border:1px solid rgba(0,212,255,.25)}
+.rc-adm .rc-tag{color:var(--violet);background:rgba(108,99,255,.12);border:1px solid rgba(108,99,255,.28)}
+.rc-prof .rc-tag{color:var(--pink);background:rgba(255,0,110,.1);border:1px solid rgba(255,0,110,.25)}
+.rc-alu .rc-tag{color:var(--green);background:rgba(22,163,74,.14);border:1px solid rgba(22,163,74,.3)}
+.rc h3{font-family:var(--fd);font-size:1rem;font-weight:600;margin-bottom:10px}
+.rc p{font-size:.85rem;color:var(--t2);line-height:1.7}
+
+/* ===== FEATURES ===== */
+.features{padding:100px 48px 120px;max-width:1200px;margin:0 auto}
 .fgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
 .fc{position:relative;padding:32px;background:var(--bg-card);border:1px solid var(--b);border-radius:var(--r);overflow:hidden;transition:var(--tr);opacity:0;transform:translateY(32px)}
 .fc.vis{opacity:1;transform:translateY(0)}
@@ -109,7 +135,17 @@ body.ch #curt{width:58px;height:58px;border-color:rgba(108,99,255,.9)}
 .fglow{position:absolute;bottom:-40px;right:-40px;width:120px;height:120px;background:radial-gradient(circle,rgba(108,99,255,.15),transparent 70%);border-radius:50%;pointer-events:none;opacity:0;transition:opacity .4s}
 .fc:hover .fglow{opacity:1}
 
-/* ===== VISION ===== */
+/* ===== FLUXO (workflow) ===== */
+.flow{padding:100px 48px;max-width:1120px;margin:0 auto}
+.flow-steps{display:flex;gap:0;flex-wrap:wrap;justify-content:center}
+.flow-step{flex:1;min-width:170px;max-width:210px;text-align:center;padding:0 10px;position:relative;opacity:0;transform:translateY(20px);transition:var(--tr)}
+.flow-step.vis{opacity:1;transform:translateY(0)}
+.flow-num{width:46px;height:46px;border-radius:50%;background:linear-gradient(135deg,var(--violet),var(--cyan));display:flex;align-items:center;justify-content:center;font-family:var(--fd);font-weight:700;font-size:1rem;color:#fff;margin:0 auto 16px;box-shadow:0 0 20px rgba(108,99,255,.4);position:relative;z-index:2}
+.flow-step:not(:last-child)::after{content:'';position:absolute;top:23px;left:calc(50% + 30px);right:calc(-50% + 30px);height:1px;background:linear-gradient(90deg,var(--violet),var(--cyan));opacity:.35;z-index:1}
+.flow-step h4{font-family:var(--fd);font-size:.92rem;font-weight:600;margin-bottom:8px}
+.flow-step p{font-size:.8rem;color:var(--t2);line-height:1.6}
+
+/* ===== VISION / PILARES ===== */
 .vision{position:relative;padding:120px 48px;overflow:hidden;text-align:center}
 .vision::before,.vision::after{content:'';position:absolute;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--violet),var(--cyan),var(--violet),transparent);opacity:.45}
 .vision::before{top:0}
@@ -119,28 +155,41 @@ body.ch #curt{width:58px;height:58px;border-color:rgba(108,99,255,.9)}
 .vcont h2{font-family:var(--fd);font-size:clamp(1.8rem,3.5vw,3rem);font-weight:700;letter-spacing:-.03em;line-height:1.14;margin-bottom:20px}
 .vcont>p{font-size:1rem;color:var(--t2);line-height:1.8;margin-bottom:56px}
 .vpillars{display:flex;justify-content:center;gap:48px;flex-wrap:wrap}
-.vp{display:flex;flex-direction:column;align-items:center;gap:10px;opacity:0;transform:translateY(20px);transition:var(--tr)}
+.vp{display:flex;flex-direction:column;align-items:center;gap:10px;opacity:0;transform:translateY(20px);transition:var(--tr);max-width:140px}
 .vp.vis{opacity:1;transform:translateY(0)}
-.vpico{font-size:1.9rem;width:62px;height:62px;display:flex;align-items:center;justify-content:center;background:var(--bg-card);border:1px solid var(--b);border-radius:var(--rs);transition:var(--tr)}
-.vp:hover .vpico{border-color:var(--bh);background:rgba(108,99,255,.1);box-shadow:0 0 20px rgba(108,99,255,.2);transform:scale(1.1)}
+.vpico{width:62px;height:62px;display:flex;align-items:center;justify-content:center;background:var(--bg-card);border:1px solid var(--b);border-radius:var(--rs);transition:var(--tr);color:var(--violet)}
+.vpico svg{width:26px;height:26px}
+.vp:hover .vpico{border-color:var(--bh);background:rgba(108,99,255,.1);box-shadow:0 0 20px rgba(108,99,255,.2);transform:scale(1.1);color:var(--cyan);filter:drop-shadow(0 0 8px var(--cyan))}
 .vp span{font-family:var(--fd);font-size:.82rem;font-weight:600;color:var(--t2);letter-spacing:.04em}
 
-/* ===== NOTIFY ===== */
-.nsec{padding:120px 48px;text-align:center}
-.ncont{max-width:600px;margin:0 auto}
-.ncont h2{font-family:var(--fd);font-size:clamp(2rem,4vw,3.2rem);font-weight:700;letter-spacing:-.03em;line-height:1.1;margin-bottom:16px}
-.ncont>p{color:var(--t2);margin-bottom:40px}
-.nform{display:flex;gap:12px;max-width:500px;margin:0 auto 16px}
-.nform input{flex:1;padding:14px 20px;background:var(--bg-card);border:1px solid var(--b);border-radius:var(--rs);color:var(--t1);font-family:var(--fb);font-size:.92rem;outline:none;transition:border-color .3s,box-shadow .3s;cursor:none}
-.nform input::placeholder{color:var(--t3)}
-.nform input:focus{border-color:var(--violet);box-shadow:0 0 0 3px rgba(108,99,255,.15)}
-.nprivacy{font-size:.78rem;color:var(--t3)}
-.smsg{display:none;align-items:center;gap:8px;margin-top:20px;padding:14px 24px;background:rgba(0,212,255,.08);border:1px solid rgba(0,212,255,.25);border-radius:var(--rs);color:var(--cyan);font-family:var(--fd);font-weight:500;animation:fu .5s forwards}
+/* ===== CTA FINAL (demo / whatsapp) ===== */
+.cta-final{padding:120px 48px;position:relative;overflow:hidden}
+.cta-grid{display:flex;align-items:center;justify-content:center;gap:64px;max-width:1100px;margin:0 auto;flex-wrap:wrap}
+.dcont{max-width:480px;flex:1 1 380px;text-align:left}
+.dcont h2{font-family:var(--fd);font-size:clamp(2rem,4vw,3.2rem);font-weight:700;letter-spacing:-.03em;line-height:1.1;margin-bottom:16px}
+.dcont>p{color:var(--t2);margin-bottom:40px;font-size:1rem;line-height:1.75}
+.wa-btn{display:inline-flex;align-items:center;gap:12px;padding:18px 36px;background:var(--wa);border-radius:var(--rs);color:#04140b;font-family:var(--fd);font-weight:700;font-size:1rem;box-shadow:0 0 30px rgba(37,211,102,.4);transition:var(--tr);cursor:none;text-decoration:none}
+.wa-btn:hover{transform:translateY(-2px);box-shadow:0 0 50px rgba(37,211,102,.6)}
+.wa-btn svg{width:22px;height:22px}
+.cta-phone{margin-top:22px;font-size:.85rem;color:var(--t3);font-family:var(--fd);letter-spacing:.02em}
+.cta-image{flex:0 1 300px;display:flex;justify-content:center;perspective:1200px;opacity:0;transform:translateY(24px);transition:var(--tr)}
+.cta-image.vis{opacity:1;transform:translateY(0)}
+.cta-image img{width:100%;max-width:280px;height:auto;display:block;filter:drop-shadow(0 30px 60px rgba(108,99,255,.4));transition:transform .7s cubic-bezier(.16,1,.3,1);transform:rotate(-6deg);cursor:none}
+.cta-image:hover img{transform:rotate(5deg) rotateY(20deg) scale(1.06)}
+
+/* ===== FLOATING WHATSAPP ===== */
+.fab-wa{position:fixed;right:24px;bottom:24px;z-index:500;width:60px;height:60px;border-radius:50%;background:var(--wa);display:flex;align-items:center;justify-content:center;box-shadow:0 8px 30px rgba(37,211,102,.5);cursor:none;transition:transform .3s;text-decoration:none}
+.fab-wa:hover{transform:scale(1.08)}
+.fab-wa svg{width:28px;height:28px;color:#04140b}
+.fab-wa::before{content:'';position:absolute;inset:-6px;border-radius:50%;border:2px solid rgba(37,211,102,.5);animation:fabpulse 2.2s ease-out infinite;pointer-events:none}
+@keyframes fabpulse{0%{transform:scale(.9);opacity:.8}100%{transform:scale(1.5);opacity:0}}
 
 /* ===== FOOTER ===== */
 footer{padding:48px;border-top:1px solid var(--b);text-align:center}
 .flogo{display:inline-flex;align-items:center;gap:10px;font-family:var(--fd);font-size:1.1rem;margin-bottom:12px}
-.fdomain{font-family:var(--fd);font-size:.88rem;color:var(--violet);margin-bottom:8px;letter-spacing:.02em}
+.fcontact{font-family:var(--fd);font-size:.88rem;margin-bottom:8px}
+.fcontact a{color:var(--cyan);text-decoration:none}
+.fcontact a:hover{text-decoration:underline}
 .fcopy{font-size:.78rem;color:var(--t3)}
 
 /* ===== UTILS ===== */
@@ -150,17 +199,24 @@ footer{padding:48px;border-top:1px solid var(--b);text-align:center}
 @media(max-width:900px){
   .nav{padding:16px 24px}
   .hero{padding:100px 24px 60px}
-  .features{padding:80px 24px}
+  .roles,.features,.flow{padding-left:24px;padding-right:24px}
+  .rolegrid{grid-template-columns:repeat(2,1fr)}
   .fgrid{grid-template-columns:repeat(2,1fr)}
-  .vision,.nsec,footer{padding:80px 24px}
+  .vision,.cta-final,footer{padding:80px 24px}
   .hstats{gap:24px}
+  .flow-step{flex:0 0 100%;max-width:340px}
+  .flow-step:not(:last-child)::after{display:none}
+  .cta-grid{flex-direction:column;text-align:center}
+  .dcont{text-align:center;max-width:520px}
 }
 @media(max-width:600px){
+  .rolegrid{grid-template-columns:1fr}
   .fgrid{grid-template-columns:1fr}
-  .nform{flex-direction:column}
   .hstats{gap:16px}
   .sdiv{display:none}
   .vpillars{gap:24px}
+  .fab-wa{right:16px;bottom:16px;width:52px;height:52px}
+  .fab-wa svg{width:24px;height:24px}
 }
 </style>
 </head>
@@ -176,7 +232,10 @@ footer{padding:48px;border-top:1px solid var(--b);text-align:center}
     <span class="nico">⬡</span>
     <span>Classes<strong>Control</strong></span>
   </div>
-  <div class="nbadge">Em desenvolvimento</div>
+  <a class="nbadge" href="https://wa.me/5511913733267?text=Ol%C3%A1!%20Gostaria%20de%20solicitar%20uma%20demonstra%C3%A7%C3%A3o%20do%20Classes%20Control." target="_blank" rel="noopener noreferrer">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg>
+    Solicitar demonstração
+  </a>
 </nav>
 
 <!-- HERO -->
@@ -185,32 +244,62 @@ footer{padding:48px;border-top:1px solid var(--b);text-align:center}
   <div class="hcont">
     <div class="eyebrow">
       <span class="edot"></span>
-      Construindo o futuro da educação em idiomas
+      Gestão completa para escolas de idiomas
     </div>
     <h1 class="htitle">
-      Uma nova revolução<br/>
-      <span class="gt">na gestão de escolas</span><br/>
-      de idiomas
+      Aulas, professores e pagamentos<br/>
+      <span class="gt">organizados em um só lugar</span>
     </h1>
-    <p class="hsub">ClassesControl está sendo forjado para transformar como você gerencia, cresce e encanta seus alunos. Do contrato digital à assinatura eletrônica — tudo em um só lugar.</p>
+    <p class="hsub">Do registro da aula ao repasse do professor, do contrato de matrícula à assinatura eletrônica — o Classes Control cuida da rotina inteira da sua escola, com um acesso feito sob medida para coordenação, professores e alunos.</p>
     <div class="hact">
-      <button class="btnp" id="nbtn">
-        <span>Quero ser notificado</span>
+      <a class="btnp" href="https://wa.me/5511913733267?text=Ol%C3%A1!%20Gostaria%20de%20solicitar%20uma%20demonstra%C3%A7%C3%A3o%20do%20Classes%20Control." target="_blank" rel="noopener noreferrer">
+        <span>Solicitar demonstração</span>
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-      </button>
-      <a href="#features" class="btng">Ver recursos</a>
+      </a>
+      <a href="#features" class="btng">Ver todos os recursos</a>
     </div>
     <div class="hstats">
-      <div class="stat"><span class="snum" data-t="100">0</span><span class="ssfx">%</span><span class="slbl">Web-based</span></div>
+      <div class="stat"><span class="snum" data-t="100">0</span><span class="ssfx">%</span><span class="slbl">Web-based, sem instalar nada</span></div>
       <div class="sdiv"></div>
       <div class="stat"><span class="snum" data-t="12">0</span><span class="ssfx">+</span><span class="slbl">Módulos integrados</span></div>
       <div class="sdiv"></div>
-      <div class="stat"><span class="snum" data-t="0">0</span><span class="ssfx">px</span><span class="slbl">Papel necessário</span></div>
+      <div class="stat"><span class="snum" data-t="4">0</span><span class="ssfx"></span><span class="slbl">Perfis de acesso</span></div>
     </div>
   </div>
   <div class="scrhint">
     <span>Explorar</span>
     <div class="scrarr"></div>
+  </div>
+</section>
+
+<!-- PERFIS -->
+<section class="roles" id="perfis">
+  <div class="shdr">
+    <span class="slbl-tag">Perfis de acesso</span>
+    <h2>Cada pessoa vê exatamente<br/><span class="gt">o que precisa ver</span></h2>
+    <p>O sistema se adapta ao papel de cada usuário — sem menus confusos, sem informação de mais, sem risco de alguém alterar o que não deveria.</p>
+  </div>
+  <div class="rolegrid">
+    <div class="rc rc-op" data-d="0">
+      <span class="rc-tag">Operador do sistema</span>
+      <h3>Equipe Classes Control</h3>
+      <p>Cadastra as escolas clientes, controla o status de cada uma (ativa, congelada ou inativa) e mantém tudo funcionando.</p>
+    </div>
+    <div class="rc rc-adm" data-d="80">
+      <span class="rc-tag">Administrador</span>
+      <h3>Coordenação da escola</h3>
+      <p>Cuida de turmas, professores, alunos, financeiro e contratos — com controle total sobre a operação da sua escola.</p>
+    </div>
+    <div class="rc rc-prof" data-d="160">
+      <span class="rc-tag">Professor</span>
+      <h3>Quem dá as aulas</h3>
+      <p>Registra as aulas aplicadas, marca presença, envia materiais e acompanha o próprio repasse em tempo real.</p>
+    </div>
+    <div class="rc rc-alu" data-d="240">
+      <span class="rc-tag">Aluno</span>
+      <h3>Quem estuda</h3>
+      <p>Consulta suas aulas, materiais e frequência a qualquer momento, direto do celular — só visualização, sem risco de erro.</p>
+    </div>
   </div>
 </section>
 
@@ -224,93 +313,184 @@ footer{padding:48px;border-top:1px solid var(--b);text-align:center}
 
     <div class="fc" data-d="0">
       <div class="ficon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4 12.5-12.5z"/></svg>
       </div>
-      <h3>Gestão de Aulas</h3>
-      <p>Agendamento inteligente, controle de presença, planos de aula e acompanhamento do progresso de cada aluno em tempo real.</p>
+      <h3>Registro de aulas</h3>
+      <p>Conteúdo, duração, tarefa e observações direto pela Agenda — e até 5 anexos por aula para materiais de apoio.</p>
       <div class="fglow"></div>
     </div>
 
-    <div class="fc" data-d="100">
+    <div class="fc" data-d="60">
+      <div class="ficon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/></svg>
+      </div>
+      <h3>Controle de presença</h3>
+      <p>Marque quem faltou e por quê. Falta sem justificativa dispara aviso automático por e-mail ao aluno e ao responsável.</p>
+      <div class="fglow"></div>
+    </div>
+
+    <div class="fc" data-d="120">
+      <div class="ficon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/><circle cx="17" cy="17" r="1.8" fill="currentColor" stroke="none"/></svg>
+      </div>
+      <h3>Agenda sem conflitos</h3>
+      <p>Horários fixos por turma alimentam a agenda semanal automaticamente — o sistema bloqueia horários sobrepostos do mesmo professor.</p>
+      <div class="fglow"></div>
+    </div>
+
+    <div class="fc" data-d="180">
+      <div class="ficon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M23 4v6h-6"/><path d="M1 20v-6h6"/><path d="M3.51 9a9 9 0 0114.13-3.36L23 10M1 14l5.36 4.36A9 9 0 0020.49 15"/></svg>
+      </div>
+      <h3>Cancelamento e reposição</h3>
+      <p>Aula cancelada vira pendência na área de Reposições — repor gera uma nova aula já vinculada, resolvendo o histórico.</p>
+      <div class="fglow"></div>
+    </div>
+
+    <div class="fc" data-d="240">
+      <div class="ficon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 018 0v4"/></svg>
+      </div>
+      <h3>Fechamento com trava</h3>
+      <p>Só a coordenação fecha e reabre aulas. Uma aula fechada fica protegida: ninguém edita, cancela ou muda presença.</p>
+      <div class="fglow"></div>
+    </div>
+
+    <div class="fc feat" data-d="300">
+      <div class="fbadge">Destaque</div>
+      <div class="ficon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 100 7h5a3.5 3.5 0 110 7H6"/></svg>
+      </div>
+      <h3>Repasse automático</h3>
+      <p>O financeiro soma as horas de aulas já fechadas e calcula, para cada professor, exatamente quanto ele tem a receber.</p>
+      <div class="fglow"></div>
+    </div>
+
+    <div class="fc" data-d="0">
+      <div class="ficon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+      </div>
+      <h3>Confirmação e log de transações</h3>
+      <p>Confirme ou estorne pagamentos com um clique. Toda ação fica registrada com data, responsável e motivo — auditoria completa.</p>
+      <div class="fglow"></div>
+    </div>
+
+    <div class="fc feat" data-d="60">
+      <div class="fbadge">Destaque</div>
       <div class="ficon">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 12h6M9 16h6M13 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V9l-7-7z"/></svg>
       </div>
-      <h3>Contratos Digitais</h3>
-      <p>Geração automática de contratos personalizados com cláusulas dinâmicas adaptadas ao perfil de cada aluno e plano.</p>
+      <h3>Contratos com assinatura eletrônica</h3>
+      <p>Geração automática do contrato de matrícula, com cláusulas personalizáveis, enviado direto para assinatura das partes.</p>
       <div class="fglow"></div>
     </div>
 
-    <div class="fc feat" data-d="200">
-      <div class="fbadge">Destaque</div>
+    <div class="fc" data-d="120">
       <div class="ficon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
       </div>
-      <h3>Assinatura Eletrônica</h3>
-      <p>Coleta de assinaturas digitais com validade jurídica completa. Zero papel, máxima segurança e conformidade legal.</p>
+      <h3>Evolução pedagógica</h3>
+      <p>Histórico de nivelamento de A1 a C2 por turma, gráfico de evolução e boletim em PDF para cada aluno.</p>
+      <div class="fglow"></div>
+    </div>
+
+    <div class="fc" data-d="180">
+      <div class="ficon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 2h6a1 1 0 011 1v1h2a2 2 0 012 2v14a2 2 0 01-2 2H6a2 2 0 01-2-2V6a2 2 0 012-2h2V3a1 1 0 011-1z"/><path d="M9 12h6M9 16h4"/></svg>
+      </div>
+      <h3>Ficha Pedagógica</h3>
+      <p>Relatório mensal por turma cruzando presença com o conteúdo dado em cada aula — pronto para baixar em PDF.</p>
+      <div class="fglow"></div>
+    </div>
+
+    <div class="fc" data-d="240">
+      <div class="ficon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 21v-6h6v6"/></svg>
+      </div>
+      <h3>Multi-escola</h3>
+      <p>Cada escola opera isolada, com seus próprios dados, usuários e situação — ativa, congelada ou inativa, controlada de forma centralizada.</p>
       <div class="fglow"></div>
     </div>
 
     <div class="fc" data-d="300">
       <div class="ficon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
       </div>
-      <h3>Integração Bancária</h3>
-      <p>Conexão direta via Open Banking com os principais bancos do Brasil. PIX automático, boletos e cartão integrados.</p>
-      <div class="fglow"></div>
-    </div>
-
-    <div class="fc" data-d="400">
-      <div class="ficon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 100 7h5a3.5 3.5 0 110 7H6"/></svg>
-      </div>
-      <h3>Gestão de Pagamentos</h3>
-      <p>Cobranças automáticas, régua de inadimplência inteligente, relatórios financeiros e conciliação bancária automatizada.</p>
-      <div class="fglow"></div>
-    </div>
-
-    <div class="fc" data-d="500">
-      <div class="ficon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-      </div>
-      <h3>Analytics & Relatórios</h3>
-      <p>Dashboards com insights sobre retenção, desempenho pedagógico e saúde financeira da sua escola em tempo real.</p>
+      <h3>Painéis e exportação</h3>
+      <p>Dashboards sob medida para cada perfil, com exportação para Excel e impressão em Aulas, Financeiro, Frequência e mais.</p>
       <div class="fglow"></div>
     </div>
 
   </div>
 </section>
 
-<!-- VISION -->
+<!-- FLUXO -->
+<section class="flow" id="fluxo">
+  <div class="shdr">
+    <span class="slbl-tag">Como funciona</span>
+    <h2>Do login ao pagamento,<br/><span class="gt">em cinco passos</span></h2>
+  </div>
+  <div class="flow-steps">
+    <div class="flow-step" data-d="0">
+      <div class="flow-num">1</div>
+      <h4>Login por perfil</h4>
+      <p>Cada pessoa entra com e-mail e senha, de acordo com o papel definido pela coordenação.</p>
+    </div>
+    <div class="flow-step" data-d="100">
+      <div class="flow-num">2</div>
+      <h4>Aula registrada</h4>
+      <p>O professor lança conteúdo, duração e anexos direto pela Agenda.</p>
+    </div>
+    <div class="flow-step" data-d="200">
+      <div class="flow-num">3</div>
+      <h4>Presença marcada</h4>
+      <p>Faltas sem justificativa avisam automaticamente aluno e responsável.</p>
+    </div>
+    <div class="flow-step" data-d="300">
+      <div class="flow-num">4</div>
+      <h4>Aula fechada</h4>
+      <p>A coordenação confere e trava a aula contra novas alterações.</p>
+    </div>
+    <div class="flow-step" data-d="400">
+      <div class="flow-num">5</div>
+      <h4>Repasse confirmado</h4>
+      <p>O financeiro calcula o valor de cada professor e registra o pagamento.</p>
+    </div>
+  </div>
+</section>
+
+<!-- VISION / PILARES -->
 <section class="vision" id="vision">
   <div class="vbg"></div>
   <div class="vcont">
     <span class="slbl-tag">Nossa visão</span>
     <h2>Feito por quem<br/><span class="gt">entende o setor</span></h2>
-    <p>ClassesControl nasceu da experiência real com escolas de idiomas. Cada funcionalidade foi desenhada para eliminar burocracia, reduzir inadimplência e devolver ao gestor o tempo que importa — ensinar.</p>
+    <p>Classes Control nasceu da experiência real com escolas de idiomas. Cada funcionalidade foi desenhada para eliminar burocracia, reduzir inadimplência e devolver ao gestor o tempo que importa — ensinar.</p>
     <div class="vpillars">
-      <div class="vp" data-d="0"><div class="vpico">⚡</div><span>Velocidade</span></div>
-      <div class="vp" data-d="100"><div class="vpico">🔒</div><span>Segurança</span></div>
-      <div class="vp" data-d="200"><div class="vpico">🌐</div><span>Integração</span></div>
-      <div class="vp" data-d="300"><div class="vpico">📱</div><span>Mobile-first</span></div>
+      <div class="vp" data-d="0"><div class="vpico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 018 0v4"/></svg></div><span>Segurança e auditoria</span></div>
+      <div class="vp" data-d="100"><div class="vpico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4 12.5-12.5z"/></svg></div><span>Assinatura eletrônica</span></div>
+      <div class="vp" data-d="200"><div class="vpico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 21v-6h6v6"/></svg></div><span>Multi-escola</span></div>
+      <div class="vp" data-d="300"><div class="vpico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="7" y="2" width="10" height="20" rx="2"/><line x1="11" y1="18" x2="13" y2="18"/></svg></div><span>Mobile-first</span></div>
     </div>
   </div>
 </section>
 
-<!-- NOTIFY -->
-<section class="nsec" id="notify">
-  <div class="ncont">
-    <span class="slbl-tag">Seja o primeiro</span>
-    <h2>Receba acesso<br/><span class="gt">antecipado</span></h2>
-    <p>Cadastre-se agora e garanta condições especiais de lançamento para sua escola.</p>
-    <div class="nform" id="nform">
-      <input type="email" placeholder="seu@email.com" id="einput"/>
-      <button class="btnp" id="sbtn">
-        <span>Garantir minha vaga</span>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-      </button>
+<!-- CTA FINAL -->
+<section class="cta-final" id="demo">
+  <div class="cta-grid">
+    <div class="dcont">
+      <span class="slbl-tag">Fale com a gente</span>
+      <h2>Veja o Classes Control<br/><span class="gt">funcionando na prática</span></h2>
+      <p>Sem formulário, sem espera. Fale agora pelo WhatsApp e agende uma demonstração gratuita para a sua escola.</p>
+      <a class="wa-btn" href="https://wa.me/5511913733267?text=Ol%C3%A1!%20Tenho%20interesse%20em%20conhecer%20o%20Classes%20Control%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es." target="_blank" rel="noopener noreferrer">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg>
+        <span>Falar no WhatsApp agora</span>
+      </a>
+      <p class="cta-phone">Atendimento direto · +55 11 91373-3267</p>
     </div>
-    <p class="nprivacy">Sem spam. Cancelamento a qualquer momento.</p>
-    <div class="smsg" id="smsg"><span>✓</span> Perfeito! Te avisaremos assim que estivermos prontos.</div>
+    <div class="cta-image" data-d="0">
+      <img src="iphone.png" alt="Tela de login do Classes Control no iPhone" loading="lazy" width="2x"/>
+    </div>
   </div>
 </section>
 
@@ -320,9 +500,16 @@ footer{padding:48px;border-top:1px solid var(--b);text-align:center}
     <span class="nico">⬡</span>
     <span>Classes<strong>Control</strong></span>
   </div>
-  <p class="fdomain">www.classescontrol.com.br</p>
-  <p class="fcopy">© 2025 ClassesControl · Todos os direitos reservados · Em desenvolvimento</p>
+  <p class="fcontact">
+    <a href="https://wa.me/5511913733267" target="_blank" rel="noopener noreferrer">WhatsApp +55 11 91373-3267</a>
+  </p>
+  <p class="fcopy">© 2026 Classes Control · www.classescontrol.com.br · Todos os direitos reservados</p>
 </footer>
+
+<!-- FLOATING WHATSAPP -->
+<a class="fab-wa" href="https://wa.me/5511913733267?text=Ol%C3%A1!%20Tenho%20interesse%20em%20conhecer%20o%20Classes%20Control%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es." target="_blank" rel="noopener noreferrer" aria-label="Falar no WhatsApp">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg>
+</a>
 
 <script>
 // ===== CURSOR =====
@@ -334,10 +521,11 @@ document.addEventListener('mousemove', e => {
   curt.style.left = e.clientX + 'px';
   curt.style.top = e.clientY + 'px';
 });
-document.querySelectorAll('a,button,input,.fc,.vp').forEach(el => {
+function bindHover(el){
   el.addEventListener('mouseenter', () => document.body.classList.add('ch'));
   el.addEventListener('mouseleave', () => document.body.classList.remove('ch'));
-});
+}
+document.querySelectorAll('a,button,input,.fc,.vp,.rc,.flow-step,.cta-image').forEach(bindHover);
 
 // ===== ORB CANVAS =====
 const cv = document.getElementById('ocanvas');
@@ -479,7 +667,7 @@ const obs = new IntersectionObserver(entries => {
     }
   });
 }, {threshold: .1, rootMargin: '0px 0px -50px 0px'});
-document.querySelectorAll('.fc,.vp').forEach(el => obs.observe(el));
+document.querySelectorAll('.fc,.vp,.rc,.flow-step,.cta-image').forEach(el => obs.observe(el));
 
 // ===== COUNTERS =====
 function counter(el, target) {
@@ -516,27 +704,6 @@ document.querySelectorAll('.fc').forEach(card => {
   });
 });
 
-// ===== NOTIFY =====
-document.getElementById('nbtn').addEventListener('click', () =>
-  document.getElementById('notify').scrollIntoView({behavior:'smooth'})
-);
-
-function handleSubmit() {
-  const v = document.getElementById('einput').value.trim();
-  const inp = document.getElementById('einput');
-  if (!v || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)) {
-    inp.style.borderColor = '#ff006e';
-    inp.style.boxShadow = '0 0 0 3px rgba(255,0,110,.15)';
-    setTimeout(() => { inp.style.borderColor = ''; inp.style.boxShadow = ''; }, 1500);
-    return;
-  }
-  document.getElementById('nform').style.display = 'none';
-  const msg = document.getElementById('smsg');
-  msg.style.display = 'inline-flex';
-}
-document.getElementById('sbtn').addEventListener('click', handleSubmit);
-document.getElementById('einput').addEventListener('keydown', e => { if (e.key === 'Enter') handleSubmit(); });
-
 // ===== SMOOTH ANCHORS =====
 document.querySelectorAll('a[href^="#"]').forEach(a =>
   a.addEventListener('click', e => {
@@ -546,13 +713,14 @@ document.querySelectorAll('a[href^="#"]').forEach(a =>
 );
 
 // ===== LOGO GLITCH =====
-const logo = document.querySelector('.nlogo');
-setInterval(() => {
-  if (Math.random() > .96) {
-    logo.style.textShadow = '2px 0 #ff006e,-2px 0 #00d4ff';
-    setTimeout(() => { logo.style.textShadow = ''; }, 75);
-  }
-}, 1200);
+document.querySelectorAll('.nlogo,.flogo').forEach(logo => {
+  setInterval(() => {
+    if (Math.random() > .96) {
+      logo.style.textShadow = '2px 0 #ff006e,-2px 0 #00d4ff';
+      setTimeout(() => { logo.style.textShadow = ''; }, 75);
+    }
+  }, 1200);
+});
 </script>
 </body>
 </html>
